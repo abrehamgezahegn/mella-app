@@ -1,17 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Text, View } from "react-native";
 import { createMaterialBottomTabNavigator } from "react-navigation-material-bottom-tabs";
 import TabIcon from "../components/TabIcon";
+import { Button } from "react-native-paper";
+import { AppContext } from "../contexts/AppProvider";
 
-class HomeScreen extends React.Component {
-  render() {
-    return (
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <Text>Home!</Text>
-      </View>
-    );
-  }
-}
+const HomeScreen = () => {
+  const context = useContext(AppContext);
+  return (
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <Text>Home!</Text>
+      <Button onPress={context.incNotification}> some</Button>
+    </View>
+  );
+};
 
 class SettingsScreen extends React.Component {
   render() {
@@ -51,15 +53,8 @@ export default createMaterialBottomTabNavigator(
     activeColor: "#EF3651",
     inactiveColor: "#ABB4BD",
     barStyle: {
-      backgroundColor: "#2A2C36",
+      backgroundColor: "#1E1F28",
       height: 58
-    },
-    tabBarOptions: {
-      activeTintColor: "#EF3651",
-      inactiveTintColor: "#ABB4BD",
-      style: {
-        backgroundColor: "#2A2C36"
-      }
     }
   }
 );
