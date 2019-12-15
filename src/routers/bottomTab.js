@@ -46,7 +46,7 @@ export default createMaterialBottomTabNavigator(
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
-      tabBarIcon: ({ focused, tintColor }) =>
+      tabBarIcon: ({ tintColor }) =>
         getTabBarIcon(navigation, focused, tintColor)
     }),
     shifting: true,
