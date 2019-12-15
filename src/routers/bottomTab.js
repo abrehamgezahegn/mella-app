@@ -4,6 +4,7 @@ import { createMaterialBottomTabNavigator } from "react-navigation-material-bott
 import TabIcon from "../components/TabIcon";
 import { Button } from "react-native-paper";
 import { AppContext } from "../contexts/AppProvider";
+import Home from "../screens/Home";
 
 const HomeScreen = () => {
   const context = useContext(AppContext);
@@ -40,13 +41,13 @@ const getTabBarIcon = (navigation, focused, tintColor) => {
 
 export default createMaterialBottomTabNavigator(
   {
-    Home: { screen: HomeScreen },
+    Home: { screen: Home },
     Pros: { screen: HomeScreen },
     Notification: { screen: SettingsScreen }
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
-      tabBarIcon: ({ tintColor }) =>
+      tabBarIcon: ({ focused, tintColor }) =>
         getTabBarIcon(navigation, focused, tintColor)
     }),
     shifting: true,

@@ -11,7 +11,8 @@ EStyleSheet.build({
   $textGrey: "#ABB4BD",
   $textLight: "#F7F7F7",
   $success: "#55D85A",
-  $danger: "#FF3E3E "
+  $danger: "#FF3E3E",
+  $borderRadius: 8
 });
 
 const AppProvider = props => {
