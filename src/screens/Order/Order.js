@@ -1,10 +1,12 @@
 import React from "react";
 import { View, Text } from "react-native";
+import { styles } from "./styles";
+import Header from "../../components/Header";
 
 const Order = () => {
   return (
-    <View>
-      <Text>Order</Text>
+    <View style={styles.container}>
+      <Header />
     </View>
   );
 };

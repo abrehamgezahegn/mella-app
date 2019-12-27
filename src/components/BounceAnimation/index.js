@@ -17,7 +17,7 @@ const BounceAnimation = ({
 
   const handlePressIn = () => {
     Animated.spring(animatedValue, {
-      toValue: 0.8,
+      toValue: 0.7,
       tension: 90
     }).start();
   };
