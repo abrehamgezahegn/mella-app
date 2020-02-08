@@ -20,7 +20,7 @@ const Header = props => {
         <Ionicons name="md-arrow-round-back" size={24} color="#F7F7F7" />
       </BounceAnimation>
       <View>
-        <Text style={styles.text}>Where?</Text>
+        <Text style={styles.text}>{props.title}</Text>
       </View>
     </View>
   );

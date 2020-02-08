@@ -1,5 +1,7 @@
 import EStyleSheet from "react-native-extended-stylesheet";
-import { StatusBar, Platform } from "react-native";
+import { StatusBar, Platform, Dimensions } from "react-native";
+
+const { width } = Dimensions.get("window");
 
 export const styles = EStyleSheet.create({
   container: {
@@ -13,5 +15,23 @@ export const styles = EStyleSheet.create({
         paddingTop: 20
       }
     })
+  },
+  inner: {
+    paddingHorizontal: 20,
+    flex: 1
+  },
+  button: {
+    backgroundColor: "$success",
+    alignSelf: "flex-end",
+    marginBottom: 24,
+    margin: "auto",
+    width: width - 40,
+    marginRight: 20,
+    paddingVertical: 14,
+    borderRadius: "$borderRadius"
+  },
+  buttonText: {
+    textAlign: "center",
+    color: "$white"
   }
 });
