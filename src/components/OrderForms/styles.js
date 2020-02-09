@@ -10,21 +10,37 @@ export const styles = EStyleSheet.create({
   tagsContainer: {
     display: "flex",
     flexDirection: "row",
+    // justifyContent: "center",
     // borderWidth: 2,
     // borderColor: "yellow",
     flexWrap: "wrap",
     marginTop: 20,
     marginBottom: width / 4
   },
+
+  confirmationContainer: {
+    marginTop: 20,
+    alignItems: "center"
+  },
+
   button: {
+    flexDirection: "row",
+    justifyContent: "center",
     borderWidth: 2,
     borderColor: "$textGrey",
-    paddingVertical: 12,
+    paddingVertical: 8,
+    paddingHorizontal: 8,
     borderRadius: 24 // TODO: ere keep your styles uniform baba
   },
   text: {
     color: "$textGrey",
     fontSize: 16
+  },
+  bigText: {
+    color: "$textLight",
+    fontSize: 28,
+    textAlign: "center",
+    fontWeight: "bold"
   },
   textInput: {
     padding: 16,
@@ -37,5 +53,21 @@ export const styles = EStyleSheet.create({
     borderColor: "$textGrey",
     borderRadius: "$borderRadius",
     width: "100%"
+  },
+  closeButton: {
+    color: "$danger"
+  },
+  icon: {
+    color: "$textGrey",
+    marginRight: 8
+  },
+  row: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  textLight: {
+    color: "$textLight",
+    fontWeight: "bold"
   }
 });
