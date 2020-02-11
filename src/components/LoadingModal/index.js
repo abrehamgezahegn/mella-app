@@ -11,14 +11,7 @@ import Loading from "../Loading";
 
 const LoadingModal = props => {
   return (
-    <ModalRN
-      animationType="slide"
-      transparent={true}
-      visible={props.visible}
-      onRequestClose={() => {
-        Alert.alert("Modal has been closed.");
-      }}
-    >
+    <ModalRN animationType="none" transparent={true} visible={props.visible}>
       <BlurView
         tint="dark"
         intensity={70}
@@ -29,7 +22,7 @@ const LoadingModal = props => {
           position: "relative"
         }}
       >
-        <Loading onCancel={props.close} />
+        <Loading onCancel={props.cancelRequest} />
       </BlurView>
     </ModalRN>
   );

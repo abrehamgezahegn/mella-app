@@ -59,12 +59,22 @@ const OrderContainer = props => {
   const [note, setNote] = useState("Get your ass over here ASAP!");
 
   const { open, close, visible } = useModal();
+  const [loading, setLoading] = useState(false);
+  const [orderSent, setOrderSent] = useState(false);
 
   useEffect(() => {
     const params = props.navigation.state.params;
     // console.log("params", params.job);
     setJob(params.job);
   }, [props.navigation.state.params]);
+
+  useEffect(() => {
+    if (orderSent) {
+      setTimeout(() => {
+        props.navigation.navigate("Home");
+      }, 2900);
+    }
+  }, [orderSent]);
 
   const handleTagTap = tag => {
     const isSelected = selectedTags.some(item => item.id === tag.id);
@@ -79,7 +89,7 @@ const OrderContainer = props => {
   };
 
   const onNext = () => {
-    if (step === 2) return open();
+    if (step === 2) return submitOrder();
     if (selectedTags.length === 0) {
       return Toast.show({
         text: "Choose atleast one tag.",
@@ -92,6 +102,21 @@ const OrderContainer = props => {
   const onPrev = () => {
     if (step === 1) props.navigation.goBack();
     if (step > 1) return setStep(prev => --prev);
+  };
+
+  const submitOrder = () => {
+    open();
+    setTimeout(() => {
+      close();
+      setOrderSent(true);
+    }, 3000);
+  };
+
+  const cancelRequest = () => {
+    // do backend
+
+    // close modal
+    close();
   };
 
   return (
@@ -108,6 +133,10 @@ const OrderContainer = props => {
       openModal={open}
       closeModal={close}
       isModalVisible={visible}
+      cancelRequest={cancelRequest}
+      loading={loading}
+      orderSent={orderSent}
+      submitOrder={submitOrder}
     />
   );
 };

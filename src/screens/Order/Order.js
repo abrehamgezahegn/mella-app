@@ -5,6 +5,7 @@ import Header from "../../components/Header";
 import { Tags, Confirmation } from "../../components/OrderForms";
 import BounceAnimation from "../../components/BounceAnimation";
 import LoadingModal from "../../components/LoadingModal";
+import CompletedLottie from "../../components/CompletedLottie";
 
 const title = {
   1: "What",
@@ -54,7 +55,9 @@ const Order = props => {
         open={props.openModal}
         close={props.closeModal}
         visible={props.isModalVisible}
+        cancelRequest={props.cancelRequest}
       />
+      {props.orderSent && <CompletedLottie />}
     </View>
   );
 };
