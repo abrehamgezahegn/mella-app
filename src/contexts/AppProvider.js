@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Root } from "native-base";
 import EStyleSheet from "react-native-extended-stylesheet";
 
 export const AppContext = React.createContext();
@@ -21,9 +22,11 @@ const AppProvider = props => {
   const incNotification = () => setNotifications(prev => ++prev);
 
   return (
-    <AppContext.Provider value={{ notifications, incNotification }}>
-      {props.children}
-    </AppContext.Provider>
+    <Root>
+      <AppContext.Provider value={{ notifications, incNotification }}>
+        {props.children}
+      </AppContext.Provider>
+    </Root>
   );
 };
 

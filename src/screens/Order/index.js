@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Order from "./Order";
 import useModal from "../../hooks/useModal";
+import { Toast } from "native-base";
 
 const jobTags = [
   {
@@ -79,13 +80,18 @@ const OrderContainer = props => {
 
   const onNext = () => {
     if (step === 2) return open();
+    if (selectedTags.length === 0) {
+      return Toast.show({
+        text: "Choose atleast one tag.",
+        buttonText: "Okay"
+      });
+    }
     if (step < 2) return setStep(prev => ++prev);
   };
 
   const onPrev = () => {
-    console.log("on prevvvv");
     if (step === 1) props.navigation.goBack();
-    if (step > 1) setStep(prev => --prev);
+    if (step > 1) return setStep(prev => --prev);
   };
 
   return (
