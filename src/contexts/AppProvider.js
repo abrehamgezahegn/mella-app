@@ -10,7 +10,7 @@ EStyleSheet.build({
   $white: "#F7F7F7",
   $textGrey: "#ABB4BD",
   $textLight: "#F7F7F7",
-  $success: "#55D85A",
+  $success: "#38c172",
   $danger: "#FF3E3E",
   $borderRadius: 8
 });

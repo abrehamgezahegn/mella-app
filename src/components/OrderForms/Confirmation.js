@@ -4,7 +4,7 @@ import Tag from "../Tag";
 import { styles } from "./styles";
 import BounceAnimation from "../BounceAnimation";
 import { MaterialCommunityIcons, Ionicons, Entypo } from "@expo/vector-icons";
-// import DatePicker from "../DatePicker";
+import DatePicker from "../DatePicker";
 
 const Confirmation = ({ job, selectedTags, note }) => {
   return (
@@ -45,7 +45,7 @@ const Confirmation = ({ job, selectedTags, note }) => {
           <Text style={styles.text}>Schedule For Later</Text>
         </View>
       </BounceAnimation>
-      <View style={styles.row}>
+      {/* <View style={styles.row}>
         <Text style={styles.text}>Scheduled For: Tue 2AM, Feb 08 </Text>
         <BounceAnimation
           onPress={() => {
@@ -58,7 +58,7 @@ const Confirmation = ({ job, selectedTags, note }) => {
             size={20}
           />
         </BounceAnimation>
-      </View>
+      </View> */}
       {/* <DatePicker /> */}
     </View>
   );

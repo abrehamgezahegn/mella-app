@@ -11,6 +11,8 @@
     "@react-native-community/datetimepicker": "^2.2.1",
     "add": "^2.0.6",
     "expo": "^35.0.0",
+    "expo-blur": "~7.0.0",
+    "lottie-react-native": "~2.6.1",
     "native-base": "^2.13.8",
     "react": "16.8.3",
     "react-dom": "16.8.3",

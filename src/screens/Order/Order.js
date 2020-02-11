@@ -4,6 +4,7 @@ import { styles } from "./styles";
 import Header from "../../components/Header";
 import { Tags, Confirmation } from "../../components/OrderForms";
 import BounceAnimation from "../../components/BounceAnimation";
+import LoadingModal from "../../components/LoadingModal";
 
 const title = {
   1: "What",
@@ -38,19 +39,22 @@ const Order = props => {
 
   return (
     <View style={styles.container}>
-      <Header title={title[props.step]} />
+      <Header title={title[props.step]} onBack={props.onPrev} />
       <View style={styles.inner}>
         {props.step === 1 && renderTags()}
         {props.step === 2 && renderConfirmation()}
       </View>
 
-      <BounceAnimation
-        onPress={() => props.step < 2 && props.setStep(prev => ++prev)}
-      >
+      <BounceAnimation onPress={props.onNext}>
         <View style={styles.button}>
           <Text style={styles.buttonText}> {buttonText[props.step]} </Text>
         </View>
       </BounceAnimation>
+      <LoadingModal
+        open={props.openModal}
+        close={props.closeModal}
+        visible={props.isModalVisible}
+      />
     </View>
   );
 };

@@ -10,11 +10,13 @@ const Header = props => {
     <View style={styles.container}>
       <BounceAnimation
         onPress={() => {
-          props.navigation.goBack();
+          props.onBack();
         }}
         containerStyle={{
           position: "absolute",
-          left: 18
+          left: 0,
+          padding: 12,
+          paddingHorizontal: 20
         }}
       >
         <Ionicons name="md-arrow-round-back" size={24} color="#F7F7F7" />

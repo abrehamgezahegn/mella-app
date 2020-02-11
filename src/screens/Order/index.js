@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Order from "./Order";
+import useModal from "../../hooks/useModal";
 
 const jobTags = [
   {
@@ -56,6 +57,8 @@ const OrderContainer = props => {
   const [selectedTags, setTags] = useState([]);
   const [note, setNote] = useState("Get your ass over here ASAP!");
 
+  const { open, close, visible } = useModal();
+
   useEffect(() => {
     const params = props.navigation.state.params;
     // console.log("params", params.job);
@@ -74,6 +77,17 @@ const OrderContainer = props => {
     setTags(data);
   };
 
+  const onNext = () => {
+    if (step === 2) return open();
+    if (step < 2) return setStep(prev => ++prev);
+  };
+
+  const onPrev = () => {
+    console.log("on prevvvv");
+    if (step === 1) props.navigation.goBack();
+    if (step > 1) setStep(prev => --prev);
+  };
+
   return (
     <Order
       step={step}
@@ -83,6 +97,11 @@ const OrderContainer = props => {
       handleTagTap={handleTagTap}
       job={job}
       note={note}
+      onNext={onNext}
+      onPrev={onPrev}
+      openModal={open}
+      closeModal={close}
+      isModalVisible={visible}
     />
   );
 };
