@@ -2,57 +2,58 @@ import React, { useState, useEffect } from "react";
 import Order from "./Order";
 import useModal from "../../hooks/useModal";
 import { Toast } from "native-base";
+import { useRoute } from "@react-navigation/native";
 
 const jobTags = [
   {
     title: "Signal Strength",
-    id: "1234terf3r4t32"
+    id: "1234terf3r4t32",
   },
   {
     title: "Tire Change",
-    id: "5678ghjkl"
+    id: "5678ghjkl",
   },
   {
     title: "Installation",
-    id: "78iubhio8y7giuoh"
+    id: "78iubhio8y7giuoh",
   },
   {
     title: "Gas",
-    id: "678ftgyhu876t"
+    id: "678ftgyhu876t",
   },
 
   {
     title: "Varzish",
-    id: "1234te235463gr4t32"
+    id: "1234te235463gr4t32",
   },
   {
     title: "Drive",
-    id: "567856fghj87hghjkl"
+    id: "567856fghj87hghjkl",
   },
   {
     title: "Birthday",
-    id: "78i564o8y67ghj7giuoh"
+    id: "78i564o8y67ghj7giuoh",
   },
   {
     title: "Stove Fix",
-    id: "678ftgyhugfghj876t"
+    id: "678ftgyhugfghj876t",
   },
 
   {
     title: "Fridge",
-    id: "12fghj34te235463gr4t32"
+    id: "12fghj34te235463gr4t32",
   },
   {
     title: "Desktop fix",
-    id: "56567gy6785687hghjkl"
+    id: "56567gy6785687hghjkl",
   },
   {
     title: "Garden",
-    id: "78ifghjkubhio8y67ghj7giuoh"
-  }
+    id: "78ifghjkubhio8y67ghj7giuoh",
+  },
 ];
 
-const OrderContainer = props => {
+const OrderContainer = (props) => {
   const [step, setStep] = useState(1);
   const [job, setJob] = useState(undefined);
   const [selectedTags, setTags] = useState([]);
@@ -62,11 +63,11 @@ const OrderContainer = props => {
   const [loading, setLoading] = useState(false);
   const [orderSent, setOrderSent] = useState(false);
 
+  const route = useRoute();
+
   useEffect(() => {
-    const params = props.navigation.state.params;
-    // console.log("params", params.job);
-    setJob(params.job);
-  }, [props.navigation.state.params]);
+    setJob(route.params.job);
+  }, []);
 
   useEffect(() => {
     if (orderSent) {
@@ -76,10 +77,10 @@ const OrderContainer = props => {
     }
   }, [orderSent]);
 
-  const handleTagTap = tag => {
-    const isSelected = selectedTags.some(item => item.id === tag.id);
+  const handleTagTap = (tag) => {
+    const isSelected = selectedTags.some((item) => item.id === tag.id);
     if (isSelected) {
-      const filtered = selectedTags.filter(item => item.id !== tag.id);
+      const filtered = selectedTags.filter((item) => item.id !== tag.id);
       setTags(filtered);
       return;
     }
@@ -92,16 +93,16 @@ const OrderContainer = props => {
     if (step === 2) return submitOrder();
     if (selectedTags.length === 0) {
       return Toast.show({
-        text: "Choose atleast one tag.",
-        buttonText: "Okay"
+        text: "Choose at least one tag.",
+        buttonText: "Okay",
       });
     }
-    if (step < 2) return setStep(prev => ++prev);
+    if (step < 2) return setStep((prev) => ++prev);
   };
 
   const onPrev = () => {
     if (step === 1) props.navigation.goBack();
-    if (step > 1) return setStep(prev => --prev);
+    if (step > 1) return setStep((prev) => --prev);
   };
 
   const submitOrder = () => {

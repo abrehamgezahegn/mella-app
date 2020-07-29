@@ -11,7 +11,7 @@ const TabIcon = ({ name, color, size, tab }) => {
     <View
       style={{
         width: 30,
-        alignItems: "center"
+        alignItems: "center",
       }}
     >
       {tab === "Home" && (
@@ -28,11 +28,11 @@ const TabIcon = ({ name, color, size, tab }) => {
       {tab === "Notification" && (
         <Ionicons style={styles.icon} name={name} size={size} color={color} />
       )}
-      {badgeCount > 0 && tab === "Notification" && (
+      {/* {badgeCount > 0 && tab === "Notification" && (
         <View style={styles.badge}>
           <Text style={styles.text}>{badgeCount}</Text>
         </View>
-      )}
+      )} */}
     </View>
   );
 };

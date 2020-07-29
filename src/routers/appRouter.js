@@ -1,28 +1,17 @@
-import { createAppContainer } from "react-navigation";
-import { createStackNavigator } from "react-navigation-stack";
+import React from "react";
 import BottomTab from "./bottomTab";
 import Order from "../screens/Order";
+import { createStackNavigator } from "@react-navigation/stack";
 
-const AppNavigator = createStackNavigator(
-  {
-    Bottom: {
-      screen: BottomTab
-    },
-    Order: {
-      screen: Order
-    }
-  },
-  {
-    initialRouteName: "Bottom",
+const Stack = createStackNavigator();
 
-    // defaultNavigationOptions: {
-    //   headerStyle: {
-    //     backgroundColor: "red",
-    //     borderWidth: 0
-    //   }
-    // },
-    headerMode: "none"
-  }
-);
+const AppNavigator = () => {
+  return (
+    <Stack.Navigator headerMode="none" initialRouteName="BottomTab">
+      <Stack.Screen name="Order" component={Order} />
+      <Stack.Screen name="BottomTab" component={BottomTab} />
+    </Stack.Navigator>
+  );
+};
 
 export default AppNavigator;

@@ -1,33 +1,34 @@
 import React, { useContext } from "react";
 import { Text, View } from "react-native";
-import { createMaterialBottomTabNavigator } from "react-navigation-material-bottom-tabs";
+import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
+
 import TabIcon from "../components/TabIcon";
 import { Button } from "react-native-paper";
 import { AppContext } from "../contexts/AppProvider";
 import Home from "../screens/Home";
+import { color } from "react-native-reanimated";
 
-const HomeScreen = () => {
+const ProsScreen = () => {
   const context = useContext(AppContext);
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>Home!</Text>
-      <Button onPress={context.incNotification}> some</Button>
+      <Text>Pros</Text>
+      <Button onPress={context.incNotification}>impress</Button>
     </View>
   );
 };
 
-class SettingsScreen extends React.Component {
-  render() {
-    return (
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <Text>Settings!</Text>
-      </View>
-    );
-  }
-}
+const SettingsScreen = () => {
+  return (
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <Text>Settings!</Text>
+    </View>
+  );
+};
 
 const getTabBarIcon = (navigation, focused, tintColor) => {
-  const { routeName } = navigation.state;
+  console.log("navigation", navigation);
+  const { name } = navigation;
   let iconName = "home";
   if (routeName === "Notification") {
     iconName = "ios-notifications";
@@ -39,23 +40,55 @@ const getTabBarIcon = (navigation, focused, tintColor) => {
   );
 };
 
-export default createMaterialBottomTabNavigator(
-  {
-    Home: { screen: Home },
-    Pros: { screen: HomeScreen },
-    Notification: { screen: SettingsScreen }
-  },
-  {
-    defaultNavigationOptions: ({ navigation }) => ({
-      tabBarIcon: ({ focused, tintColor }) =>
-        getTabBarIcon(navigation, focused, tintColor)
-    }),
-    shifting: true,
-    activeColor: "#EF3651",
-    inactiveColor: "#ABB4BD",
-    barStyle: {
-      backgroundColor: "#1E1F28",
-      height: 58
-    }
-  }
-);
+const Tab = createMaterialBottomTabNavigator();
+
+const BottomTab = () => {
+  return (
+    <Tab.Navigator
+      shifting={true}
+      activeColor="#EF3651"
+      inactiveColor="#ABB4BD"
+      barStyle={{
+        backgroundColor: "#1E1F28",
+        height: 58,
+      }}
+      tabBarIcon={getTabBarIcon}
+    >
+      <Tab.Screen
+        name="Home"
+        component={Home}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <TabIcon name="home" size={28} color={color} tab="Home" />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Pros"
+        component={ProsScreen}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <TabIcon name="account-search" size={28} color={color} tab="Pros" />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Notification"
+        component={SettingsScreen}
+        options={{
+          tabBarBadge: true,
+          tabBarIcon: ({ color, size }) => (
+            <TabIcon
+              name="ios-notifications"
+              size={28}
+              color={color}
+              tab="Notification"
+            />
+          ),
+        }}
+      />
+    </Tab.Navigator>
+  );
+};
+
+export default BottomTab;

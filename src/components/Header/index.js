@@ -3,9 +3,8 @@ import { View, Text } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { styles } from "./styles";
 import BounceAnimation from "../BounceAnimation";
-import { withNavigation } from "react-navigation";
 
-const Header = props => {
+const Header = (props) => {
   return (
     <View style={styles.container}>
       <BounceAnimation
@@ -16,7 +15,7 @@ const Header = props => {
           position: "absolute",
           left: 0,
           padding: 12,
-          paddingHorizontal: 20
+          paddingHorizontal: 20,
         }}
       >
         <Ionicons name="md-arrow-round-back" size={24} color="#F7F7F7" />
@@ -28,4 +27,4 @@ const Header = props => {
   );
 };
 
-export default withNavigation(Header);
+export default Header;

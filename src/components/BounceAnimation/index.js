@@ -4,7 +4,7 @@ import { Animated, TouchableWithoutFeedback } from "react-native";
 const BounceAnimation = ({
   containerStyle = {},
   onPress = () => {},
-  children
+  children,
 }) => {
   const [animatedValue, setValue] = useState();
   const [animatedStyle, setStyle] = useState({});
@@ -17,13 +17,15 @@ const BounceAnimation = ({
 
   const handlePressIn = () => {
     Animated.spring(animatedValue, {
-      toValue: 0.7,
-      tension: 90
+      toValue: 0.9,
+      tension: 90,
+      useNativeDriver: true,
     }).start();
   };
   const handlePressOut = () => {
     Animated.spring(animatedValue, {
-      toValue: 1
+      toValue: 1,
+      useNativeDriver: true,
     }).start();
   };
 
