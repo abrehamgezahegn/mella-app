@@ -59,7 +59,7 @@ const Confirmation = ({ job, selectedTags, note }) => {
           />
         </BounceAnimation>
       </View> */}
-      {/* <DatePicker /> */}
+      <DatePicker />
     </View>
   );
 };
