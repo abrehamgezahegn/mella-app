@@ -2,22 +2,24 @@ import React, { useState } from "react";
 import { View, Text } from "react-native";
 import { styles } from "./styles";
 import Header from "../../components/Header";
-import { Tags, Confirmation } from "../../components/OrderForms";
+import { Tags, Confirmation, Map } from "../../components/OrderForms";
 import BounceAnimation from "../../components/BounceAnimation";
 import LoadingModal from "../../components/LoadingModal";
 import CompletedLottie from "../../components/CompletedLottie";
 
 const title = {
-  1: "What",
-  2: "Confirmation"
+  1: "Order",
+  2: "Order",
+  3: "Confirmation",
 };
 
 const buttonText = {
   1: "Continue",
-  2: "Confirm"
+  2: "Continue",
+  3: "Confirm",
 };
 
-const Order = props => {
+const Order = (props) => {
   const renderTags = () => {
     return (
       <Tags
@@ -42,8 +44,9 @@ const Order = props => {
     <View style={styles.container}>
       <Header title={title[props.step]} onBack={props.onPrev} />
       <View style={styles.inner}>
-        {props.step === 1 && renderTags()}
-        {props.step === 2 && renderConfirmation()}
+        {props.step === 1 && <Map />}
+        {props.step === 2 && renderTags()}
+        {props.step === 3 && renderConfirmation()}
       </View>
 
       <BounceAnimation onPress={props.onNext}>

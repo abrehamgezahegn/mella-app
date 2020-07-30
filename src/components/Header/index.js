@@ -16,6 +16,7 @@ const Header = (props) => {
           left: 0,
           padding: 12,
           paddingHorizontal: 20,
+          top: 16,
         }}
       >
         <Ionicons name="md-arrow-round-back" size={24} color="#F7F7F7" />

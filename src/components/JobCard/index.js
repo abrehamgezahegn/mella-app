@@ -6,7 +6,6 @@ import { useNavigation } from "@react-navigation/native";
 
 const JobCard = ({ job, ...props }) => {
   const navigation = useNavigation();
-  console.log("naviationnn isn jc ", navigation);
   return (
     <BounceAnimation
       onPress={() => navigation.navigate("Order", { job })}

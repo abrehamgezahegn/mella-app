@@ -90,14 +90,14 @@ const OrderContainer = (props) => {
   };
 
   const onNext = () => {
-    if (step === 2) return submitOrder();
-    if (selectedTags.length === 0) {
+    if (step === 3) return submitOrder();
+    if (selectedTags.length === 0 && step === 2) {
       return Toast.show({
         text: "Choose at least one tag.",
         buttonText: "Okay",
       });
     }
-    if (step < 2) return setStep((prev) => ++prev);
+    if (step < 3) return setStep((prev) => ++prev);
   };
 
   const onPrev = () => {

@@ -9,16 +9,16 @@ export const styles = EStyleSheet.create({
     flex: 1,
     ...Platform.select({
       android: {
-        paddingTop: StatusBar.currentHeight
+        paddingTop: StatusBar.currentHeight,
       },
       ios: {
-        paddingTop: 20
-      }
-    })
+        paddingTop: 20,
+      },
+    }),
   },
   inner: {
     paddingHorizontal: 20,
-    flex: 1
+    flex: 1,
   },
   button: {
     backgroundColor: "$success",
@@ -28,10 +28,10 @@ export const styles = EStyleSheet.create({
     width: width - 40,
     marginRight: 20,
     paddingVertical: 14,
-    borderRadius: "$borderRadius"
+    borderRadius: "$borderRadius",
   },
   buttonText: {
     textAlign: "center",
-    color: "$white"
-  }
+    color: "$white",
+  },
 });

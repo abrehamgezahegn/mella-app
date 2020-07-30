@@ -27,7 +27,6 @@ const SettingsScreen = () => {
 };
 
 const getTabBarIcon = (navigation, focused, tintColor) => {
-  console.log("navigation", navigation);
   const { name } = navigation;
   let iconName = "home";
   if (routeName === "Notification") {
