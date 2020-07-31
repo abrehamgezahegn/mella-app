@@ -4,6 +4,7 @@ import AppNavigator from "./appRouter";
 // import AuthNavigator from "./authRouter";
 
 import { NavigationContainer } from "@react-navigation/native";
+import DrawerNavigator from "./drawerRouter";
 
 const FinalRouter = () => {
   const { loggedIn } = useContext(AuthContext);
@@ -12,7 +13,7 @@ const FinalRouter = () => {
 
   return (
     <NavigationContainer>
-      <AppNavigator />
+      <DrawerNavigator />
     </NavigationContainer>
   );
 

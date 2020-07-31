@@ -1,5 +1,7 @@
 import EStyleSheet from "react-native-extended-stylesheet";
-import { StatusBar, Platform } from "react-native";
+import { StatusBar, Platform, Dimensions } from "react-native";
+
+const { width, height } = Dimensions.get("window");
 
 export const styles = EStyleSheet.create({
   container: {
@@ -7,13 +9,13 @@ export const styles = EStyleSheet.create({
     flex: 1,
     ...Platform.select({
       android: {
-        paddingTop: StatusBar.currentHeight
+        paddingTop: StatusBar.currentHeight,
       },
       ios: {
-        paddingTop: 20
-      }
+        paddingTop: 10,
+      },
     }),
-    paddingHorizontal: "6%"
+    paddingHorizontal: "6%",
   },
   inner: {
     flex: 1,
@@ -21,13 +23,21 @@ export const styles = EStyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     flexWrap: "wrap",
-    paddingBottom: 40
+    paddingBottom: 40,
   },
   header: {
-    fontSize: 34,
+    width: width,
+    position: "absolute",
+    borderBottomWidth: 0.5,
+    borderColor: "$textGrey",
+    left: -24,
+    paddingBottom: 15,
+  },
+  headerText: {
+    fontSize: 24,
     color: "$textLight",
     textAlign: "center",
     fontWeight: "bold",
-    marginTop: 30
-  }
+    marginTop: 35,
+  },
 });
