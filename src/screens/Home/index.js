@@ -55,7 +55,7 @@ const Home = () => {
               }}
               source={{
                 uri:
-                  "https://www.gannett-cdn.com/presto/2019/09/11/USAT/ab5c4363-b8ec-40b4-a617-4e0b08a3aa4b-AP_Kevin_Hart_Crash.JPG",
+                  "https://pmcdeadline2.files.wordpress.com/2019/08/kevinhartphotobykevinkwan-e1565889449268.jpg?w=580&h=383&crop=1",
               }}
             />
           </BounceAnimation>

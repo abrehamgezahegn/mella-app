@@ -26,6 +26,8 @@ const Order = (props) => {
         jobTags={props.jobTags}
         handleTagTap={props.handleTagTap}
         selectedTags={props.selectedTags}
+        setNote={props.setNote}
+        note={props.note}
       />
     );
   };
@@ -36,6 +38,7 @@ const Order = (props) => {
         job={props.job}
         selectedTags={props.selectedTags}
         note={props.note}
+        location={props.location}
       />
     );
   };
@@ -44,7 +47,7 @@ const Order = (props) => {
     <View style={styles.container}>
       <Header title={title[props.step]} onBack={props.onPrev} />
       <View style={styles.inner}>
-        {props.step === 1 && <Map />}
+        {props.step === 1 && <Map setLocation={props.setLocation} />}
         {props.step === 2 && renderTags()}
         {props.step === 3 && renderConfirmation()}
       </View>

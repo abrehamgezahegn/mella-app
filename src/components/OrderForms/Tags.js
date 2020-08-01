@@ -6,7 +6,7 @@ import { styles } from "./styles";
 import BounceAnimation from "../BounceAnimation";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
-const Tags = props => {
+const Tags = (props) => {
   const [showInput, setShowInput] = useState(false);
 
   return (
@@ -16,17 +16,17 @@ const Tags = props => {
       contentContainerStyle={styles.container}
     >
       <View style={styles.tagsContainer}>
-        {props.jobTags.map(item => (
+        {props.jobTags.map((item) => (
           <Tag
             key={Math.random()}
             text={item.title}
             onPress={props.handleTagTap}
             tag={item}
-            selected={props.selectedTags.some(tag => tag.id === item.id)}
+            selected={props.selectedTags.some((tag) => tag.id === item.id)}
           />
         ))}
       </View>
-      {!showInput && (
+      {!showInput && props.note.length === 0 && (
         <BounceAnimation
           onPress={() => {
             setShowInput(true);
@@ -37,12 +37,17 @@ const Tags = props => {
           </View>
         </BounceAnimation>
       )}
-      {showInput && (
+      {(showInput || props.note.length > 0) && (
         <TextInput
           placeholderTextColor="#ABB4BD"
           placeholder="Please make sense"
           style={styles.textInput}
+          value={props.note}
           multiline
+          onChangeText={(some) => {
+            props.setNote(some);
+          }}
+          onEndEditing={(value) => {}}
         />
       )}
     </KeyboardAwareScrollView>

@@ -2,11 +2,9 @@ import React from "react";
 import { View, Text } from "react-native";
 import Tag from "../Tag";
 import { styles } from "./styles";
-import BounceAnimation from "../BounceAnimation";
-import { MaterialCommunityIcons, Ionicons, Entypo } from "@expo/vector-icons";
-import DatePicker from "../DatePicker";
+import { Entypo } from "@expo/vector-icons";
 
-const Confirmation = ({ job, selectedTags, note }) => {
+const Confirmation = ({ job, selectedTags, note, location }) => {
   return (
     <View style={styles.confirmationContainer}>
       <Text style={styles.bigText}>{job.title}</Text>
@@ -16,7 +14,7 @@ const Confirmation = ({ job, selectedTags, note }) => {
           size={20}
           style={{ ...styles.icon, marginRight: 6 }}
         />
-        <Text style={styles.text}>{"4 Kilo Medahnialem"}</Text>
+        <Text style={styles.text}>{location.name}</Text>
       </View>
       <View style={{ ...styles.tagsContainer, marginBottom: 22 }}>
         {selectedTags.map((item) => (
@@ -29,8 +27,15 @@ const Confirmation = ({ job, selectedTags, note }) => {
           />
         ))}
       </View>
-      <Text style={{ ...styles.text, marginTop: 0 }}>Your Note</Text>
-      <Text style={{ ...styles.textLight, marginTop: 12 }}>{note}</Text>
+      {note.length == 0 && (
+        <Text style={{ ...styles.text, marginTop: 0 }}>No note</Text>
+      )}
+      {note.length > 0 && (
+        <>
+          <Text style={{ ...styles.text, marginTop: 0 }}>Your Note</Text>
+          <Text style={{ ...styles.textLight, marginTop: 12 }}>{note}</Text>
+        </>
+      )}
     </View>
   );
 };

@@ -57,7 +57,8 @@ const OrderContainer = (props) => {
   const [step, setStep] = useState(1);
   const [job, setJob] = useState(undefined);
   const [selectedTags, setTags] = useState([]);
-  const [note, setNote] = useState("Get your ass over here ASAP!");
+  const [note, setNote] = useState("");
+  const [location, setLocation] = useState({});
 
   const { open, close, visible } = useModal();
   const [loading, setLoading] = useState(false);
@@ -138,6 +139,9 @@ const OrderContainer = (props) => {
       loading={loading}
       orderSent={orderSent}
       submitOrder={submitOrder}
+      setLocation={setLocation}
+      location={location}
+      setNote={setNote}
     />
   );
 };
