@@ -5,8 +5,9 @@ const { width } = Dimensions.get("window");
 
 export const styles = EStyleSheet.create({
   container: {
-    backgroundColor: "$backgroundLight",
+    backgroundColor: "red",
     flex: 1,
+
     ...Platform.select({
       android: {
         paddingTop: StatusBar.currentHeight,

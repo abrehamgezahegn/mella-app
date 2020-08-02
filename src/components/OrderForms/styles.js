@@ -23,7 +23,6 @@ export const styles = EStyleSheet.create({
     justifyContent: "center",
   },
   mapContainer: {
-    flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",

@@ -12,3 +12,4 @@ web-report/
 .history
 # macOS
 .DS_Store
+.env

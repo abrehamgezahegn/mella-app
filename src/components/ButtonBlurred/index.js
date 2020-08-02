@@ -10,7 +10,6 @@ const ButtonBlurred = ({ loading, containerStyle, onPress, children }) => {
         tint="dark"
         intensity={30}
         style={{
-          flex: 1,
           alignItems: "center",
           justifyContent: "center",
           flexDirection: "row",

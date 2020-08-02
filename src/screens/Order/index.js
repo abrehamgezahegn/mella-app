@@ -58,7 +58,14 @@ const OrderContainer = (props) => {
   const [job, setJob] = useState(undefined);
   const [selectedTags, setTags] = useState([]);
   const [note, setNote] = useState("");
-  const [location, setLocation] = useState({});
+  const [locationName, setLocationName] = useState(null);
+  const [location, setLocation] = useState({
+    latitude: 8.9806,
+    longitude: 38.7578,
+    latitudeDelta: 0.02212519303089522,
+    longitudeDelta: 0.012593641877174377,
+  });
+  const [autocompleteValue, setAutocompleteValue] = useState("");
 
   const { open, close, visible } = useModal();
   const [loading, setLoading] = useState(false);
@@ -141,6 +148,10 @@ const OrderContainer = (props) => {
       submitOrder={submitOrder}
       setLocation={setLocation}
       location={location}
+      locationName={locationName}
+      setLocationName={setLocationName}
+      autocompleteValue={autocompleteValue}
+      setAutocompleteValue={setAutocompleteValue}
       setNote={setNote}
     />
   );
