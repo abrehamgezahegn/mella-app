@@ -8,7 +8,7 @@ const ButtonBlurred = ({ loading, containerStyle, onPress, children }) => {
     <BounceAnimation onPress={onPress}>
       <BlurView
         tint="dark"
-        intensity={30}
+        intensity={50}
         style={{
           alignItems: "center",
           justifyContent: "center",

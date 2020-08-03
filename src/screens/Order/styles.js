@@ -5,7 +5,7 @@ const { width } = Dimensions.get("window");
 
 export const styles = EStyleSheet.create({
   container: {
-    backgroundColor: "red",
+    backgroundColor: "$backgroundLight",
     flex: 1,
 
     ...Platform.select({

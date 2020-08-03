@@ -56,7 +56,6 @@ const GoogleAutocomplete = ({
         onTimeout={() => {
           console.log("autocomplete request timeout");
         }}
-        currentLocation={true}
         query={{
           key: "AIzaSyDTo6A8qKIomdgyJGZng4UtV6W2L1LIvBs",
           language: "en",

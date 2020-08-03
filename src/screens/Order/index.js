@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { Toast } from "native-base";
+import axios from "axios";
+import { useRoute } from "@react-navigation/native";
+import { useAuth } from "../../contexts/AuthProvider";
+
 import Order from "./Order";
 import useModal from "../../hooks/useModal";
-import { Toast } from "native-base";
-import { useRoute } from "@react-navigation/native";
 
 const jobTags = [
   {
@@ -54,10 +57,13 @@ const jobTags = [
 ];
 
 const OrderContainer = (props) => {
+  const auth = useAuth();
+
   const [step, setStep] = useState(1);
   const [job, setJob] = useState(undefined);
   const [selectedTags, setTags] = useState([]);
   const [note, setNote] = useState("");
+
   const [locationName, setLocationName] = useState(null);
   const [location, setLocation] = useState({
     latitude: 8.9806,
@@ -114,6 +120,18 @@ const OrderContainer = (props) => {
   };
 
   const submitOrder = () => {
+    // const order = {
+
+    // }
+    // try {
+    //   const res = await axios({
+    //     method: "POST",
+    //     data: JSON.stringify()
+    //   })
+    // } catch (err) {
+    //   console.log("submit order" , err);
+    // }
+
     open();
     setTimeout(() => {
       close();
@@ -153,6 +171,7 @@ const OrderContainer = (props) => {
       autocompleteValue={autocompleteValue}
       setAutocompleteValue={setAutocompleteValue}
       setNote={setNote}
+      initialLocation={auth.currentLocation}
     />
   );
 };

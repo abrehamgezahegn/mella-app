@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Root } from "native-base";
 import EStyleSheet from "react-native-extended-stylesheet";
 
@@ -13,13 +13,19 @@ EStyleSheet.build({
   $textLight: "#F7F7F7",
   $success: "#38c172",
   $danger: "#FF3E3E",
-  $borderRadius: 8
+  $borderRadius: 8,
 });
 
-const AppProvider = props => {
+// const instance = axios.create({
+//   baseURL: "http://localhost:3000",
+//   // timeout: 1000,
+//   // headers: {'X-Custom-Header': 'foobar'}
+// });
+
+const AppProvider = (props) => {
   const [notifications, setNotifications] = useState(3);
 
-  const incNotification = () => setNotifications(prev => ++prev);
+  const incNotification = () => setNotifications((prev) => ++prev);
 
   return (
     <Root>

@@ -1,15 +1,9 @@
 import EStyleSheet from "react-native-extended-stylesheet";
-import { Dimensions, Platform, NativeModules } from "react-native";
+import { Dimensions, Platform, StatusBar } from "react-native";
 
-const { StatusBarManager } = NativeModules;
+let STATUSBAR_HEIGHT = Platform.OS === "ios" ? 20 : StatusBar.currentHeight;
 
-let STATUSBAR_HEIGHT = Platform.OS === "ios" ? 20 : StatusBarManager.HEIGHT;
-StatusBarManager.getHeight((statusBarHeight) => {
-  STATUSBAR_HEIGHT =
-    Platform.OS === "ios" ? statusBarHeight.height : StatusBarManager.HEIGHT;
-});
-
-const { width, height } = Dimensions.get("window");
+const { width } = Dimensions.get("window");
 
 export const styles = EStyleSheet.create({
   container: {

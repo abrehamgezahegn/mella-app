@@ -6,6 +6,8 @@ const { width, height } = Dimensions.get("window");
 export const styles = EStyleSheet.create({
   container: {
     alignItems: "center",
+    flex: 0.7,
+    justifyContent: "center",
   },
   tagsContainer: {
     display: "flex",
@@ -19,7 +21,7 @@ export const styles = EStyleSheet.create({
   confirmationContainer: {
     marginTop: 20,
     alignItems: "center",
-    flex: 0.7,
+    flex: 0.9,
     justifyContent: "center",
   },
   mapContainer: {

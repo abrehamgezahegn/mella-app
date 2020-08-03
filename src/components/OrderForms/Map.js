@@ -4,41 +4,23 @@ import axios from "axios";
 import LottieView from "lottie-react-native";
 import debounce from "lodash.debounce";
 import { View, Dimensions } from "react-native";
-import * as Location from "expo-location";
 import { styles } from "./styles";
 
 const { width, height } = Dimensions.get("window");
 
 const Map = ({
   setLocation,
-  location,
   setLocationName,
   setAutocompleteValue,
+  initialLocation,
 }) => {
   const [lottieRef, setLottie] = useState(null);
-  const [deltas, setDeltas] = useState({
-    latitudeDelta: 0.02212519303089522,
-    longitudeDelta: 0.012593641877174377,
-  });
-  const [loadingLocation, setLoading] = useState(true);
 
   useEffect(() => {
     lottieRef && lottieRef.play();
   }, [lottieRef]);
 
-  useEffect(() => {
-    (async () => {
-      let { status } = await Location.requestPermissionsAsync();
-      if (status !== "granted") {
-        console.log("location permission denied");
-        //: TODO: navigate to home and show toast
-      }
-      // let location = await Location.getCurrentPositionAsync({});
-    })();
-  }, []);
-
   const handleRegionChange = debounce(async (region) => {
-    setLoading(true);
     setLocationName(null);
     setAutocompleteValue("");
 
@@ -56,7 +38,7 @@ const Map = ({
 
         name: name,
       });
-      setLoading(false);
+      setAutocompleteValue(name);
     } catch (error) {
       console.log("handle region chage", error);
     }
@@ -67,48 +49,34 @@ const Map = ({
       <View style={styles.mapContainer}>
         <MapView
           style={styles.mapStyle}
-          initialRegion={{
-            latitude: 8.9806,
-            longitude: 38.7578,
-            latitudeDelta: 0.02212519303089522,
-            longitudeDelta: 0.012593641877174377,
-          }}
-          region={{
-            ...location,
-            ...deltas,
-          }}
+          initialRegion={initialLocation}
           provider={PROVIDER_GOOGLE}
           showsUserLocation={true}
           showsMyLocationButton={true}
-          mapPadding={{ top: 0, right: 20, bottom: 140, left: 0 }}
+          mapPadding={{ top: 0, right: 20, bottom: 170, left: 0 }}
           loadingEnabled={true}
           onRegionChangeComplete={(region) => {
             console.log("region complete");
             setLocation(region);
-            setDeltas({
-              latitudeDelta: region.latitudeDelta,
-              longitudeDelta: region.longitudeDelta,
-            });
             handleRegionChange(region);
           }}
-          onRegionChange={(region) => {
-            // handleRegionChange(region);
+          cacheEnabled={true}
+          followsUserLocation={true}
+          userLocationAnnotationTitle={"Your location"}
+        />
+        <LottieView
+          ref={(lottie) => setLottie(lottie)}
+          loop
+          duration={3000}
+          style={{
+            width: 100,
+            height: 120,
+            position: "absolute",
+            top: height / 18,
+            left: width / 10,
           }}
-        >
-          <LottieView
-            ref={(lottie) => setLottie(lottie)}
-            loop
-            duration={3000}
-            style={{
-              width: 100,
-              height: 120,
-              position: "absolute",
-              top: height / 11,
-              left: width / 8.5,
-            }}
-            source={require("../../../assets/map-pin.json")}
-          />
-        </MapView>
+          source={require("../../../assets/map-pin.json")}
+        />
       </View>
     </>
   );
