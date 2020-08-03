@@ -22,7 +22,7 @@ const Confirmation = ({ job, selectedTags, note, setNote, location }) => {
           <Entypo
             name="location-pin"
             size={20}
-            style={{ ...styles.icon, marginRight: 6, marginTop: -12 }}
+            style={{ ...styles.icon, marginRight: 6, marginTop: 0 }}
           />
           <Text style={{ ...styles.text, textAlign: "center" }}>
             {location.name}

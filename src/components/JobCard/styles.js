@@ -10,11 +10,12 @@ export const styles = EStyleSheet.create({
     width: width * 0.4,
     marginBottom: 20,
     borderRadius: "$borderRadius",
-    padding: 12
+    padding: 8,
+    zIndex: 2,
   },
   text: {
     color: "$textLight",
     fontSize: 16,
-    fontWeight: "bold"
-  }
+    fontWeight: "bold",
+  },
 });
