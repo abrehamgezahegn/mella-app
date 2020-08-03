@@ -119,24 +119,37 @@ const OrderContainer = (props) => {
     if (step > 1) return setStep((prev) => --prev);
   };
 
-  const submitOrder = () => {
-    // const order = {
-
-    // }
-    // try {
-    //   const res = await axios({
-    //     method: "POST",
-    //     data: JSON.stringify()
-    //   })
-    // } catch (err) {
-    //   console.log("submit order" , err);
-    // }
-
+  const submitOrder = async () => {
     open();
-    setTimeout(() => {
+    const order = {
+      client: auth.user.id,
+      job: job.title,
+      jobTags: selectedTags.map((item) => item.title),
+      latitude: location.latitude,
+      longitude: location.longitude,
+      scheduled: false,
+      note,
+      locationName: locationName,
+    };
+    console.log(order);
+
+    try {
+      const res = await axios({
+        url: "http://192.168.1.8:3000/order/create",
+        method: "post",
+        data: order,
+        // header: { "Content-Type": "application/json" },
+      });
+      console.log("res ", res);
+      if (res) {
+        console.log("response", res);
+        setOrderSent(true);
+        close();
+      }
+    } catch (err) {
       close();
-      setOrderSent(true);
-    }, 3000);
+      // console.log("submit order", err);
+    }
   };
 
   const cancelRequest = () => {

@@ -6,7 +6,11 @@ export const AuthContext = React.createContext();
 
 const AuthProvider = (props) => {
   const [loggedIn, setLoggedIn] = useState(true);
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState({
+    id: "5f27e7cafa81e778961dabc7",
+    firstName: "Kevin",
+    lastName: "Hart",
+  });
 
   const [locLoading, setLocLoading] = useState(true);
   const [currentLocation, setCurrentLocation] = useState({

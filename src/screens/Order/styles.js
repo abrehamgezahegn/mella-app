@@ -30,9 +30,12 @@ export const styles = EStyleSheet.create({
     marginRight: 20,
     paddingVertical: 14,
     borderRadius: "$borderRadius",
+    height: 54,
+    justifyContent: "center",
   },
   buttonText: {
     textAlign: "center",
     color: "$white",
+    fontSize: 18,
   },
 });
