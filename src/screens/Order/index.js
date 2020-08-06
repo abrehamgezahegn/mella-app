@@ -140,9 +140,9 @@ const OrderContainer = (props) => {
         data: order,
         // header: { "Content-Type": "application/json" },
       });
-      console.log("res ", res);
+      // console.log("res ", res);
       if (res) {
-        console.log("response", res);
+        // console.log("response", res);
         setOrderSent(true);
         close();
       }
