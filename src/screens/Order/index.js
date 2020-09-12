@@ -7,6 +7,9 @@ import { useAuth } from "../../contexts/AuthProvider";
 import Order from "./Order";
 import useModal from "../../hooks/useModal";
 
+const CancelToken = axios.CancelToken;
+let source;
+
 const jobTags = [
   {
     title: "Signal Strength",
@@ -120,6 +123,8 @@ const OrderContainer = (props) => {
   };
 
   const submitOrder = async () => {
+    source = CancelToken.source();
+
     open();
     const order = {
       client: auth.user.id,
@@ -131,31 +136,30 @@ const OrderContainer = (props) => {
       note,
       locationName: locationName,
     };
-    console.log(order);
 
     try {
       const res = await axios({
-        url: "http://192.168.1.8:3000/order/create",
+        url: "/order/create",
         method: "post",
         data: order,
-        // header: { "Content-Type": "application/json" },
+        cancelToken: source.token,
       });
-      // console.log("res ", res);
       if (res) {
-        // console.log("response", res);
         setOrderSent(true);
         close();
       }
     } catch (err) {
-      close();
-      // console.log("submit order", err);
+      if (axios.isCancel(err)) {
+        console.log("request canceled");
+      }
+      console.log("submit order", err);
     }
   };
 
   const cancelRequest = () => {
-    // do backend
-
-    // close modal
+    //TODO: cancel request backend call
+    console.log("canceling request ");
+    source.cancel("Order canceled");
     close();
   };
 

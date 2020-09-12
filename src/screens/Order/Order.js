@@ -104,8 +104,10 @@ const Order = (props) => {
           </View>
         </>
       )}
-      <BounceAnimation onPress={props.onNext}>
-        <View style={styles.button}>
+      <BounceAnimation onPress={props.locationName ? props.onNext : () => {}}>
+        <View
+          style={{ ...styles.button, opacity: props.locationName ? 1 : 0.8 }}
+        >
           <Text style={styles.buttonText}> {buttonText[props.step]} </Text>
         </View>
       </BounceAnimation>

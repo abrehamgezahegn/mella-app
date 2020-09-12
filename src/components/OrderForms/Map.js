@@ -30,7 +30,6 @@ const Map = ({
       );
       const name = res.data.results[0].formatted_address;
       setLocationName(name);
-      console.log("setting location", region.latitude);
       setLocation({
         ...region,
         latitude: region.latitude,
@@ -56,7 +55,6 @@ const Map = ({
           mapPadding={{ top: 0, right: 20, bottom: 170, left: 0 }}
           loadingEnabled={true}
           onRegionChangeComplete={(region) => {
-            console.log("region complete");
             setLocation(region);
             handleRegionChange(region);
           }}

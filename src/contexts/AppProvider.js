@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Root } from "native-base";
 import EStyleSheet from "react-native-extended-stylesheet";
+import axios from "axios";
+
+axios.defaults.baseURL = "http://192.168.1.8:3000";
 
 export const AppContext = React.createContext();
 

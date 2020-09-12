@@ -46,7 +46,6 @@ const GoogleAutocomplete = ({
         textInputProps={{
           value: autocompleteValue,
           onChangeText: (value) => {
-            console.log("on chnage", value);
             setAutocompleteValue(value);
           },
         }}
