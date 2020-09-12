@@ -6,7 +6,7 @@ import TabIcon from "../components/TabIcon";
 import { Button } from "react-native-paper";
 import { AppContext } from "../contexts/AppProvider";
 import Home from "../screens/Home";
-import { color } from "react-native-reanimated";
+import Notifications from "../screens/Notifications";
 
 const ProsScreen = () => {
   const context = useContext(AppContext);
@@ -14,14 +14,6 @@ const ProsScreen = () => {
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
       <Text>Pros</Text>
       <Button onPress={context.incNotification}>impress</Button>
-    </View>
-  );
-};
-
-const SettingsScreen = () => {
-  return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>Settings!</Text>
     </View>
   );
 };
@@ -73,7 +65,7 @@ const BottomTab = () => {
       />
       <Tab.Screen
         name="Notification"
-        component={SettingsScreen}
+        component={Notifications}
         options={{
           tabBarBadge: true,
           tabBarIcon: ({ color, size }) => (
