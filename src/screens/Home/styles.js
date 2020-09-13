@@ -40,4 +40,25 @@ export const styles = EStyleSheet.create({
     fontWeight: "bold",
     marginTop: 35,
   },
+
+  ordersSection: {
+    marginTop: 40,
+  },
+
+  ordersContainer: {
+    paddingBottom: 20,
+    marginTop: 20,
+  },
+
+  orderCard: {
+    marginRight: 20,
+  },
+
+  sectionTitle: {
+    color: "$textLight",
+    fontSize: 20,
+    fontWeight: "bold",
+    opacity: 0.8,
+    marginLeft: 4,
+  },
 });
