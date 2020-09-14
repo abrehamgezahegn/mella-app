@@ -1,21 +1,26 @@
 import EStyleSheet from "react-native-extended-stylesheet";
 
 export const styles = EStyleSheet.create({
-  container: {},
-  inner: {
-    borderRadius: 24,
-    padding: 10,
-    paddingTop: 30,
-    backgroundColor: "$backgroundDark",
+  container: {
     shadowColor: "#1E1F28",
     shadowOffset: {
-      width: 10,
+      width: 5,
       height: 12,
     },
     shadowOpacity: 0.22,
     shadowRadius: 2.22,
-
     elevation: 1,
+  },
+  inner: {
+    minWidth: 240,
+    maxWidth: 340,
+    height: "100%",
+    borderRadius: 24,
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    backgroundColor: "$backgroundDark",
+    alignItems: "center",
+    justifyContent: "center",
   },
 
   text: {
@@ -49,5 +54,9 @@ export const styles = EStyleSheet.create({
   textLight: {
     color: "$textLight",
     fontWeight: "bold",
+  },
+  avatarContainer: {
+    flexDirection: "row",
+    marginTop: 20,
   },
 });

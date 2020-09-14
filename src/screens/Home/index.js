@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { View, ScrollView, Text, Image } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
@@ -6,6 +6,8 @@ import JobCard from "../../components/JobCard";
 import OrderCard from "../../components/OrderCard";
 import { styles } from "./styles";
 import BounceAnimation from "../../components/BounceAnimation";
+import axios from "axios";
+import { useAuth } from "../../contexts/AuthProvider";
 
 const jobs = [
   {
@@ -47,68 +49,28 @@ const jobs = [
   },
 ];
 
-const orders = [
-  {
-    id: "6717g2h9182b38",
-    job: "Mechanic",
-    location: "Sarbet Church St.Giorgis",
-    jobTags: [
-      {
-        title: "Signal Strength",
-        id: "1234terf3r4t32",
-      },
-      {
-        title: "Tire Change",
-        id: "5678ghjkl",
-      },
-      {
-        title: "Installation",
-        id: "78iubhio8y7giuoh",
-      },
-    ],
-  },
-  {
-    id: "6717g2cgjvhbukjblnh9182b38",
-    job: "Mechanic",
-    location: "Sarbet Church St.Giorgis",
-    jobTags: [
-      {
-        title: "Signal Strength",
-        id: "1234terf3r4t32",
-      },
-      {
-        title: "Tire Change",
-        id: "5678ghjkl",
-      },
-      {
-        title: "Installation",
-        id: "78iubhio8y7giuoh",
-      },
-    ],
-  },
-  {
-    id: "6717uihobiog2h9182b38",
-    job: "Mechanic",
-    location: "Sarbet Church St.Giorgis",
-    jobTags: [
-      {
-        title: "Signal Strength",
-        id: "1234terf3r4t32",
-      },
-      {
-        title: "Tire Change",
-        id: "5678ghjkl",
-      },
-      {
-        title: "Installation",
-        id: "78iubhio8y7giuoh",
-      },
-    ],
-  },
-];
-
 const Home = () => {
   const navigation = useNavigation();
+  const auth = useAuth();
+  const ordersRef = useRef();
+
+  const [orders, setOrders] = useState([]);
+
+  useEffect(() => {
+    if (ordersRef) {
+      if (ordersRef.current) console.log("scroll view", ordersRef.current);
+    }
+    fetchOrders();
+  }, []);
+
+  const fetchOrders = async () => {
+    try {
+      const res = await axios.get(`/order/user/${auth.user.id}`);
+      setOrders(res.data);
+    } catch (error) {
+      console.log("fetch order", error);
+    }
+  };
 
   return (
     <>
@@ -140,7 +102,7 @@ const Home = () => {
 
         <View style={styles.ordersSection}>
           <Text style={styles.sectionTitle}>Pending Orders</Text>
-          <ScrollView style={styles.ordersContainer} horizontal>
+          <ScrollView ref={ordersRef} style={styles.ordersContainer} horizontal>
             {orders.map((item) => (
               <View style={styles.orderCard} key={item.id}>
                 <OrderCard order={item} />
